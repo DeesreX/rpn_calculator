@@ -1,5 +1,3 @@
-
-
 def calcu(stack, item):
     res = int(stack[0])
     stack.pop(0)
@@ -19,23 +17,14 @@ def calcu(stack, item):
     stack.append(res)
     return stack
 
-def cal(exp):
-    exp_list = []
-    for item in exp.split(' '): exp_list.append(item)
-
-    operators = ['+', '-', '*', '/']
-    
-    stack = []
-    for item in exp_list:
-        if not item in operators:
-            stack.append(item)
-        if item in operators:
-            stack = calcu(stack, item)
-    return stack[0]
-
-
-
 if __name__ == "__main__":
-
-
-    print(cal(input()))
+    operators=['+','-','*','/']
+    stack=[]
+    while True:
+        user_i = input()
+        if user_i.lower() == 'off': break
+        if user_i.isdigit() and user_i not in operators:
+            stack.append(user_i)
+        if user_i in operators:
+            stack = calcu(stack, user_i)
+            print(stack[0])
